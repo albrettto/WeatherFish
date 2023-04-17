@@ -1,0 +1,100 @@
+{% extends 'main/base.html'%}
+
+{% load static %}
+
+{% block data_choose %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+      {{ cf.date_inf }}
+      <div class="col-auto"></div>
+      <button type="submit" class="btn btn-dark col">Сохранить</button>
+  </div>
+</form>
+{% endblock data_choose %}
+
+{% block content %}
+<div class="row px-5 py-3 head_h2">
+  <h2>Кластеризация в городе {{city_name}}</h2>
+</div>
+<!-- Первая карточка -->
+<div class="row px-5 py-3">
+    <div class="col-12 card cluster_card" style="border-radius: 15px;">
+      <div class="card-body">
+        <h4 class="card-title p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2012" aria-expanded="false" aria-controls="collapse2012">2012 Год</h4>
+        <div class="collapse" id="collapse2012">
+          <div class="container-fluid d-flex justify-content-center mt-100">
+            <img class="img-fluid" src="{% static 'clusters/Vancouver_2012_1.png' %}" alt=""  >
+            <img class="img-fluid" src="{% static 'clusters/Vancouver_2012_2.png' %}" alt=""  >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Первая карточка -->
+
+<!-- Вторая карточка -->
+<div class="row px-5 py-3">
+    <div class="col-12 card info_card" style="border-radius: 15px;">
+      <div class="card-body">
+        <h4 class="card-title p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2013" aria-expanded="false" aria-controls="collapse2013">2013 Год</h4>
+        <div class="collapse" id="collapse2013">
+            <img class="img-fluid  " src="{% static 'clusters/.png' %}" alt=""  width="40" height="40">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Вторая карточка -->
+
+<!-- Третья карточка -->
+<div class="row px-5 py-3">
+    <div class="col-12 card info_card" style="border-radius: 15px;">
+      <div class="card-body">
+        <h4 class="card-title p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2014" aria-expanded="false" aria-controls="collapse2014">2014 Год</h4>
+        <div class="collapse" id="collapse2014">
+            <img class="img-fluid  " src="{% static 'clusters/.png' %}" alt=""  width="40" height="40">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Третья карточка -->
+
+<!-- Четвертая карточка -->
+<div class="row px-5 py-3">
+    <div class="col-12 card info_card" style="border-radius: 15px;">
+      <div class="card-body">
+        <h4 class="card-title p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2015" aria-expanded="false" aria-controls="collapse2015">2015 Год</h4>
+        <div class="collapse" id="collapse2015">
+            <img class="img-fluid  " src="{% static 'clusters/.png' %}" alt=""  width="40" height="40">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Четвертая карточка -->
+
+<!-- Пятая карточка -->
+<div class="row px-5 py-3">
+    <div class="col-12 card info_card" style="border-radius: 15px;">
+      <div class="card-body">
+        <h4 class="card-title p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2016" aria-expanded="false" aria-controls="collapse2016">2016 Год</h4>
+        <div class="collapse" id="collapse2016">
+            <img class="img-fluid  " src="{% static 'clusters/.png' %}" alt=""  width="40" height="40">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Пятая карточка -->
+
+<!-- Шестая карточка -->
+<div class="row px-5 py-3">
+    <div class="col-12 card info_card" style="border-radius: 15px;">
+      <div class="card-body">
+        <h4 class="card-title p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2017" aria-expanded="false" aria-controls="collapse2017">2017 Год</h4>
+        <div class="collapse" id="collapse2017">
+            <img class="img-fluid  " src="{% static 'clusters/.png' %}" alt=""  width="40" height="40">
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Шестая карточка -->
+{% endblock content %}

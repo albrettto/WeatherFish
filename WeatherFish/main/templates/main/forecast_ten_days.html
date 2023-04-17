@@ -1,0 +1,273 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{% block data_choose %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+      {{ cf.date_inf }}
+      <div class="col-auto"></div>
+      <button type="submit" class="btn btn-dark col">Сохранить</button>
+  </div>
+</form>
+{% endblock data_choose %}
+{% load user_filter %}
+
+{% block content %}
+        <!-- Первая карточка -->
+        <div class="row px-5 py-5">
+          <div class="col-12 card" style="border-radius: 15px;">
+            <div class="card-body">
+              <h4 class="card-title">Прогноз на 10 дней в городе <span class="town_h">{{towns.0.city}}</span></h4>
+                <table class="table caption-top">
+                  <caption>Используются среднесуточные значения</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Дата</th>
+                      <th scope="col">Температура</th>
+                      <th scope="col">Ветер</th>
+                      <th scope="col">Давление</th>
+                      <th scope="col">Влажность</th>
+                      <th scope="col">Описание погоды</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for town in towns %}
+                    <tr>
+                      <th class="align-middle" scope="row">{{town.datetime.datetime|date:"l, d.m.Y"}}</th>
+                      <td class="align-middle">{{list_temp|index:forloop.counter0}}</td>
+                      <td class="align-middle">{{list_wind_speed|index:forloop.counter0}}</td>
+                      <td class="align-middle">{{list_pressure|index:forloop.counter0}}</td>
+                      <td class="align-middle">{{list_humidity|index:forloop.counter0}}</td>
+                      <td class="align-middle">
+                        {% if town.description == "broken clouds" %}
+                          <img class="img-fluid  " src="{% static 'icons/broken clouds.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "dust" %}
+                          <img class="img-fluid  " src="{% static 'icons/dust.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "few clouds" %}
+                          <img class="img-fluid  " src="{% static 'icons/few clouds.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "fog" %}
+                          <img class="img-fluid  " src="{% static 'icons/fog.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "freezing rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/freezing rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "haze" %}
+                          <img class="img-fluid  " src="{% static 'icons/haze.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "heavy intensity drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/heavy intensity drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "heavy intensity rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/heavy intensity rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "heavy intensity shower rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/heavy intensity shower rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "heavy shower snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/heavy shower snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "heavy snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/heavy snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "heavy thunderstorm" %}
+                          <img class="img-fluid  " src="{% static 'icons/heavy thunderstorm.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light intensity drizzle rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/light intensity drizzle rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light intensity drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/light intensity drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light intensity shower rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/light intensity shower rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light rain and snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/light rain and snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/light rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light shower sleet" %}
+                          <img class="img-fluid  " src="{% static 'icons/light shower sleet.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light shower snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/light shower snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "light snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/light snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "mist" %}
+                          <img class="img-fluid  " src="{% static 'icons/mist.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "moderate rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/moderate rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "overcast clouds" %}
+                          <img class="img-fluid  " src="{% static 'icons/overcast clouds.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "proximity moderate rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/proximity moderate rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "proximity sand dust whirls" %}
+                          <img class="img-fluid  " src="{% static 'icons/proximity sand dust whirls.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "proximity shower rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/proximity shower rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "proximity thunderstorm with drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/proximity thunderstorm with drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "proximity thunderstorm with rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/proximity thunderstorm with rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "proximity thunderstorm" %}
+                          <img class="img-fluid  " src="{% static 'icons/proximity thunderstorm.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "ragged shower rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/ragged shower rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "ragged thunderstorm" %}
+                          <img class="img-fluid  " src="{% static 'icons/ragged thunderstorm.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "rain and snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/rain and snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "sand dust whirls" %}
+                          <img class="img-fluid  " src="{% static 'icons/sand dust whirls.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "sand" %}
+                          <img class="img-fluid  " src="{% static 'icons/sand.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "scattered clouds" %}
+                          <img class="img-fluid  " src="{% static 'icons/scattered clouds.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "shower drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/shower drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "shower rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/shower rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "shower snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/shower snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "sky is clear" %}
+                          <img class="img-fluid  " src="{% static 'icons/sky is clear.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "sleet" %}
+                          <img class="img-fluid  " src="{% static 'icons/sleet.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "smoke" %}
+                          <img class="img-fluid  " src="{% static 'icons/smoke.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "snow" %}
+                          <img class="img-fluid  " src="{% static 'icons/snow.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "squalls" %}
+                          <img class="img-fluid  " src="{% static 'icons/squalls.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstom with heavy drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstom with heavy drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstorm with drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstorm with drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstorm with heavy rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstorm with heavy rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstorm with light drizzle" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstorm with light drizzle.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstorm with light rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstorm with light rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstorm with rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstorm with rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "thunderstorm" %}
+                          <img class="img-fluid  " src="{% static 'icons/thunderstorm.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "tornado" %}
+                          <img class="img-fluid  " src="{% static 'icons/tornado.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "very heavy rain" %}
+                          <img class="img-fluid  " src="{% static 'icons/very heavy rain.png' %}" alt=""  width="40" height="40">
+                        {% elif town.description == "volcanic ash" %}
+                          <img class="img-fluid  " src="{% static 'icons/volcanic ash.png' %}" alt=""  width="40" height="40">
+                        {% else %}
+                          <img class="img-fluid " src="{% static 'icons/None.png' %}" alt=""  width="30" height="30">
+                        {% endif %}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+        <!-- Первая карточка -->
+
+        <!-- Вторая карточка -->
+        <div class="row px-5 py-5">
+          <div class="col-12 card info_card" style="border-radius: 15px;">
+            <div class="card-body">
+              <h4 class="card-title">График температуры</h4>
+                <div class="container-fluid d-flex justify-content-center mt-100">
+                  <div id="temperature-chart" class="col-12" style="height: 400px;">
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function(){
+                      // Create liteChart.js Object
+                      let d1 = new liteChart("chart");
+
+                      let time = [];
+                      {% for tim in list_date %}
+                       time.push('{{tim}}');
+                      {% endfor %}
+                      // Set labels
+                      d1.setLabels(time);
+
+                      // Set legends and values
+                      d1.addLegend({"name": "Температура","stroke": "#3b95f7", "fill": "#fff", "values": {{list_temp}}});
+
+                      // Inject chart into DOM object
+                      let div1 = document.getElementById("temperature-chart");
+                      d1.inject(div1);
+
+                      // Draw
+                      d1.draw();
+                    });
+                  </script>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Вторая карточка -->
+
+        <!-- Третья карточка -->
+        <div class="row px-5 py-3" >
+          <div class="col-12 card info_card" style="border-radius: 15px;">
+            <div class="card-body">
+              <h4 class="card-title">График давления</h4>
+                <div class="container-fluid d-flex justify-content-center mt-100">
+                  <div id="pressure-chart" class="col-12" style="height: 400px;">
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function(){
+                      // Create liteChart.js Object
+                      let d2 = new liteChart("charta");
+
+                      let time = [];
+                      {% for tim in list_date %}
+                       time.push('{{tim}}');
+                      {% endfor %}
+                      // Set labels
+                      d2.setLabels(time);
+
+                      // Set legends and values
+                      d2.addLegend({"name": "Давление","stroke": "#3b95f7", "fill": "#fff", "values": {{list_pressure}}});
+
+                      // Inject chart into DOM object
+                      let div2 = document.getElementById("pressure-chart");
+                      d2.inject(div2);
+                      // Draw
+                      d2.draw();
+                    });
+                  </script>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Третья карточка -->
+
+        <!-- Четвертая карточка -->
+        <div class="row px-5 py-5">
+          <div class="col-12 card info_card" style="border-radius: 15px;">
+            <div class="card-body">
+              <h4 class="card-title">График влажности</h4>
+                <div class="container-fluid d-flex justify-content-center mt-100">
+                  <div id="humidity-chart" class="col-12" style="height: 400px;">
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function(){
+                      // Create liteChart.js Object
+                      let d3 = new liteChart("chartb");
+
+                     let time = [];
+                      {% for tim in list_date %}
+                       time.push('{{tim}}');
+                      {% endfor %}
+                      // Set labels
+                      d3.setLabels(time);
+
+                      // Set legends and values
+                      d3.addLegend({"name": "Влажность","stroke": "#3b95f7", "fill": "#fff", "values": {{list_humidity}}});
+
+                      // Inject chart into DOM object
+                      let div3 = document.getElementById("humidity-chart");
+                      d3.inject(div3);
+
+                      // Draw
+                      d3.draw();
+                    });
+                  </script>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Четвертая карточка -->
+{% endblock content %}

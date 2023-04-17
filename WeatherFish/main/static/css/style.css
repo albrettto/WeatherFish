@@ -1,0 +1,107 @@
+.heading{
+  font-family: 'Cinzel', serif;
+}
+
+.zn_image{
+  height: 19%;
+  width: 19%;
+}
+
+.icon{
+  height: 30%;
+  width: 30%;
+}
+
+img.weather_icon{
+  height: 10%;
+  width: 10%;
+}
+
+main{
+  background: -webkit-linear-gradient(180deg, #8595b5,#f8f9fa);/* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(180deg, #8595b5,#f8f9fa);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+footer{
+  background: #f8f9fa;
+}
+
+.head1{
+  background: #113356;
+}
+
+.head2{
+  background: #113356;
+  color: #000;
+}
+
+.head3{
+  background: #061a31;
+  color: #fff;
+}
+
+.btn-outline-secondary{
+  color: #fff;
+  border: 0;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-secondary:visited{
+  background-color: #113356;
+  color: #fff;
+}
+
+
+.btn-secondary{
+  background: #113356;
+  color: #fff;
+  border: 0;
+}
+
+.btn-secondary:hover,
+.btn-secondary:visited{
+  background-color: #445e7a;
+  color: #fff;
+}
+
+.btn-outline-primary{
+  border:0;
+  color: #fff;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:visited,
+.btn-outline-primary:focus
+{
+  color: #8595b5;
+}
+
+
+.towns_card{
+  background: #8595b5;
+}
+
+.card{
+  border: 1px solid black;
+  color: black;
+}
+
+.cluster_card{
+background: -webkit-linear-gradient(180deg, #9DB4CD, #B3C3D6);
+background: linear-gradient(180deg, #9DB4CD, #B3C3D6);
+color: #000000 ;
+border:0;
+}
+
+.info_card{
+background: -webkit-linear-gradient(180deg, #113356,#506d91);/* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(180deg, #113356,#506d91);
+color: #FFFFFF ;
+border:0;
+}
+
+.town_h{
+  color: #6c5677;
+}
+
+.head_h2{
+  color: #000000;
+}
